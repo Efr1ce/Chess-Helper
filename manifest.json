@@ -1,0 +1,35 @@
+{
+  "name": "My Extension",
+  "description": "This is my extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "node_modules/@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css",
+        "node_modules/@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.js",
+        "jquery.min.js"
+      ],
+      "matches": ["https://*/*"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "script-src": ["'self'", "'unsafe-eval'", "http://localhost:*", "http://127.0.0.1:*"],
+    "script-src-elem": ["'self'", "'unsafe-inline'", "http://localhost:*", "http://127.0.0.1:*"]
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
